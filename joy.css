@@ -20,6 +20,7 @@ body {
     flex-direction: column;
     opacity: 0;
     animation: pageFadeIn 0.5s ease-in forwards; 
+    overflow-x: hidden; /* Защита от горизонтального скролла на телефонах */
 }
 
 @keyframes pageFadeIn {
@@ -44,7 +45,7 @@ body.home-page::before {
     width: 100%;
     height: 100%;
     background-image: url('/img/HomePage.jpg'); 
-    background-size: 100% auto;
+    background-size: cover; /* Изменено для адаптивности */
     background-position: top center;
     background-repeat: no-repeat;
     z-index: -10; 
@@ -189,8 +190,8 @@ body.home-page::before {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-top: 14vw; 
-    padding-bottom: 5vw;
+    padding-top: clamp(8rem, 14vw, 15rem); 
+    padding-bottom: clamp(3rem, 5vw, 6rem);
 }
 
 .main-title {
@@ -273,7 +274,7 @@ body.home-page::before {
 .section-2 {
     display: flex;
     align-items: flex-start;
-    padding-top: 7vw; 
+    padding-top: clamp(4rem, 7vw, 8rem); 
 }
 
 .expand-link {
@@ -448,16 +449,16 @@ body.home-page::before {
 /* =========================================
    СЕКЦИЯ 5 (КАК ПРОХОДИТ СЕССИЯ)
    ========================================= */
-.section-5 { padding-top: 0vw; padding-bottom: 5vw; margin-top: 0vw; }
-.timeline-area { position: relative; padding: 0; margin-top: 4vw; }
-.process-step { position: relative; z-index: 2; margin-bottom: 6vw; }
+.section-5 { padding-top: 0; padding-bottom: clamp(3rem, 5vw, 6rem); margin-top: 0; }
+.timeline-area { position: relative; padding: 0; margin-top: clamp(2rem, 4vw, 5rem); }
+.process-step { position: relative; z-index: 2; margin-bottom: clamp(3rem, 6vw, 7rem); }
 .process-step:last-child { margin-bottom: 0; }
 
 .process-step:not(:last-child)::after {
     content: "";
     position: absolute;
     top: 25px; 
-    bottom: -6vw; 
+    bottom: clamp(-6rem, -6vw, -3rem); 
     left: 50%;
     transform: translateX(-50%);
     width: 2px;
@@ -477,10 +478,10 @@ body.home-page::before {
     z-index: 2;
 }
 
-.col-text-left { display: flex; justify-content: flex-end; padding-right: 3vw; }
-.col-img-right { display: flex; justify-content: flex-start; padding-left: 3vw; }
-.col-text-right { display: flex; justify-content: flex-start; padding-left: 3vw; }
-.col-img-left { display: flex; justify-content: flex-end; padding-right: 3vw; }
+.col-text-left { display: flex; justify-content: flex-end; padding-right: clamp(1rem, 3vw, 3rem); }
+.col-img-right { display: flex; justify-content: flex-start; padding-left: clamp(1rem, 3vw, 3rem); }
+.col-text-right { display: flex; justify-content: flex-start; padding-left: clamp(1rem, 3vw, 3rem); }
+.col-img-left { display: flex; justify-content: flex-end; padding-right: clamp(1rem, 3vw, 3rem); }
 
 .text-box { max-width: 380px; text-align: left; }
 
@@ -494,14 +495,14 @@ body.home-page::before {
 }
 
 .process-img { width: auto; object-fit: contain; }
-.img-step-1 { max-height: 450px; margin-top: -8vw; margin-left: 0; }
-.img-step-2 { max-height: 350px; margin-top: -2vw; margin-right: 0; }
-.img-step-3 { max-height: 500px; margin-top: -9vw; margin-left: 2vw; }
+.img-step-1 { max-height: 450px; margin-top: clamp(-8rem, -8vw, -2rem); margin-left: 0; }
+.img-step-2 { max-height: 350px; margin-top: clamp(-2rem, -2vw, -1rem); margin-right: 0; }
+.img-step-3 { max-height: 500px; margin-top: clamp(-9rem, -9vw, -3rem); margin-left: clamp(0rem, 2vw, 2rem); }
 
 /* =========================================
    СЕКЦИЯ 6 (РЕЗУЛЬТАТЫ)
    ========================================= */
-.section-6 { padding: 6rem 0; padding-top: 2vw; }
+.section-6 { padding: 6rem 0; padding-top: clamp(1rem, 2vw, 3rem); }
 
 .result-circle {
     position: relative;
@@ -551,7 +552,7 @@ body.home-page::before {
     justify-content: center;
     text-align: center;
     min-width: 18rem;
-    margin: 3.5vw 0 auto;
+    margin: clamp(2rem, 3.5vw, 4rem) 0 auto;
     cursor: pointer;
 }
 .appointment-button-white:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(224, 198, 173, 0.6); background: #fdfbf9; color: #3D3935; text-decoration: none; }
@@ -559,7 +560,7 @@ body.home-page::before {
 /* =========================================
    ОБЩИЕ СТИЛИ ДЛЯ ОБОИХ СЛАЙДЕРОВ
    ========================================= */
-.section-specialists, .section-8 { padding: 4vw 0; }
+.section-specialists, .section-8 { padding: clamp(2rem, 4vw, 5rem) 0; }
 .section-8 { margin-top: -240px; }
 
 .slider-wrapper { 
@@ -574,7 +575,8 @@ body.home-page::before {
 
 .specialists-slider-container, 
 .slider-container { 
-    width: 970px; 
+    max-width: 970px; 
+    width: 100%;
     overflow: hidden; 
     padding: 20px 0; 
     margin: 0 auto;
@@ -640,8 +642,8 @@ body.home-page::before {
 /* =========================================
    СЕКЦИЯ 7 (ВСТРЕЧАЕМСЯ ЗДЕСЬ)
    ========================================= */
-.section-7 { padding: 7vw 0; }
-.panel-container { display: flex; max-width: 62.5rem; width: 100%; height: 31.25rem; background-color: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); overflow: hidden; position: relative; margin: 0 auto; }
+.section-7 { padding: clamp(4rem, 7vw, 8rem) 0; }
+.panel-container { display: flex; max-width: 62.5rem; width: 100%; min-height: 31.25rem; height: auto; background-color: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); overflow: hidden; position: relative; margin: 0 auto; }
 .text-panel { width: 50%; padding: 3rem; display: flex; align-items: center; z-index: 2; }
 .text-panel h1 { font-family: 'Tenor Sans', sans-serif; font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 1.2rem; color: #3D3935; line-height: 1.2; }
 .carousel-overlay { position: absolute; right: 0; top: 0; width: 50%; height: 100%; border-radius: 0 20px 20px 0; overflow: hidden; }
@@ -656,21 +658,21 @@ body.home-page::before {
 /* =========================================
    СЕКЦИЯ 9 (МЕДИТАЦИИ)
    ========================================= */
-.section-9 { padding: 0; margin-top: -4vw; position: relative; overflow: hidden; color: #3D3935; height: 40rem; }
+.section-9 { padding: 0; margin-top: clamp(-4rem, -4vw, -1rem); position: relative; overflow: hidden; color: #3D3935; height: 40rem; }
 .section-9__image { padding-left: 3rem; text-align: right; }
 .section-9__image img { max-width: 100%; width: 18.75rem; height: 31.25rem; }
-.section-9__text p:last-of-type { margin-bottom: 3vw; }
+.section-9__text p:last-of-type { margin-bottom: clamp(1.5rem, 3vw, 3rem); }
 
 /* =========================================
    СЕКЦИЯ 10 (КОНТАКТЫ)
    ========================================= */
-.section-10 { padding: 15vw 0 2vw; margin-top: -8vw; }
-.section-10 .contact-right-side { margin-top: -3vw; padding-left: 3vw; }
+.section-10 { padding: clamp(6rem, 15vw, 15rem) 0 clamp(1rem, 2vw, 3rem); margin-top: clamp(-8rem, -8vw, -2rem); }
+.section-10 .contact-right-side { margin-top: clamp(-3rem, -3vw, -1rem); padding-left: clamp(1rem, 3vw, 3rem); }
 .section-10 .contact-buttons-row { display: flex; flex-direction: row; gap: 1rem; margin-top: 2rem; margin-bottom: 2.5rem; }
 .section-10 .appointment-button-white, .section-10 .consultation-button { margin: 0 !important; padding: 0.8rem 1.5rem !important; font-size: 0.8rem !important; border-radius: 25px !important; font-weight: normal !important; height: 45px; min-width: 14rem !important; display: flex; align-items: center; justify-content: center; white-space: nowrap; }
 .section-10 .consultation-button { background: linear-gradient(to bottom, #FFE9D4, #E0C6AD); color: #3D3935; border: 2px solid #E0C6AD; text-transform: uppercase; text-decoration: none; box-shadow: 0 4px 8px rgba(224, 198, 173, 0.4); transition: all 0.3s ease; }
 .section-10 .consultation-button:hover { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(224, 198, 173, 0.5); background: linear-gradient(to bottom, #e8d2b9, #d4b79a); }
-.contact-right-block { margin-top: -3vw; }
+.contact-right-block { margin-top: clamp(-3rem, -3vw, -1rem); }
 
 .consultation-button { background: linear-gradient(to bottom, #FFE9D4, #E0C6AD); color: #3D3935; border: 2px solid #E0C6AD; border-radius: 25px; padding: 0.7rem 1.8rem; font-family: 'Lato', sans-serif; text-transform: uppercase; font-size: 0.8rem; box-shadow: 0 4px 8px rgba(224, 198, 173, 0.4); transition: all 0.3s ease; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; text-align: center; min-width: 11.25rem; }
 .consultation-button:hover { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(224, 198, 173, 0.5); background: linear-gradient(to bottom, #e8d2b9, #d4b79a); text-decoration: none; }
@@ -745,7 +747,7 @@ body.home-page::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: 100% auto;
+    background-size: cover; /* Изменено для адаптивности */
     background-position: top center;
     background-repeat: no-repeat;
     z-index: -10;
@@ -1140,7 +1142,7 @@ body.cabinet-page .main-button:hover { transform: translateY(-2px); box-shadow: 
    ФОНЫ И КРУГИ ДЛЯ ВНУТРЕННИХ СТРАНИЦ
    ========================================= */
 .specialists-page, .profile-page { background-color: #ffffff; padding-top: 80px; position: relative; }
-.profile-page::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: 100% auto; background-position: top center; background-repeat: no-repeat; z-index: -10; transform: translateZ(0); will-change: transform; pointer-events: none; }
+.profile-page::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; /* Изменено для адаптивности */ background-position: top center; background-repeat: no-repeat; z-index: -10; transform: translateZ(0); will-change: transform; pointer-events: none; }
 body.profile-page::before { background-image: url('/img/Специалисты.jpg'); }
 .catalog-page .section, .publications-page .section, .article-page .section, .specialists-page .section, .services-page .section, .contacts-page .section, .profile-page .section, .privacy-page .section, .faq-page .section { position: relative; overflow: hidden !important; }
 .catalog-page .container, .publications-page .container, .article-page .container, .specialists-page .container, .services-page .container, .contacts-page .container, .profile-page .container, .privacy-page .container, .faq-page .container { position: relative; z-index: 2; }
@@ -1187,7 +1189,7 @@ body.profile-page::before { background-image: url('/img/Специалисты.j
 
 /* Контакты: боковой отступ */
 .contact-block-padding {
-    padding-left: 3vw;
+    padding-left: clamp(1rem, 3vw, 3rem);
 }
 
 /* Кнопки в блоке контактов (фикс размеров) */
@@ -1730,7 +1732,7 @@ body.profile-page::before { background-image: url('/img/Специалисты.j
     color: white !important;
 }
 
-/* Карточки отзывов */
+/* Карточка отзывов */
 .review-item-card {
     background: white;
     border-radius: 15px;
@@ -2279,245 +2281,38 @@ body.profile-page::before { background-image: url('/img/Специалисты.j
 .legal-text-content li {
     margin-bottom: 10px;
 }
+
 /* =========================================
-   БАЗОВАЯ АДАПТИВКА — ТОЛЬКО ТОЧЕЧНЫЕ ПРАВКИ
+   АДАПТИВ (МЕДИА-ЗАПРОСЫ) ДЛЯ ИСПРАВЛЕНИЯ КОНФЛИКТОВ
    ========================================= */
-
-/* --- ТВ и большие экраны (от 1600px) --- */
-@media (min-width: 1600px) {
-    body.home-page::before {
-        background-size: cover;
-        background-position: center top;
-    }
-}
-
-/* --- Ноутбуки и маленькие ПК (до 1200px) --- */
 @media (max-width: 1200px) {
-    .nav-links {
-        gap: 0.5rem;
-    }
-    .nav-links a {
-        font-size: 0.75rem;
-    }
-    .address {
-        right: 10%;
-        font-size: 0.65rem;
-    }
-    .services-grid {
-        gap: 3rem;
-    }
-    .specialists-slider-container,
-    .slider-container {
-        width: 95%;
-    }
-    .panel-container {
-        max-width: 90%;
-    }
+    .panel-container { flex-direction: column; min-height: auto; }
+    .text-panel { width: 100%; padding: 2rem; }
+    .carousel-overlay { position: relative; width: 100%; height: 300px; border-radius: 0 0 20px 20px; }
+    .section-8 { margin-top: -100px; }
 }
 
-/* --- Планшеты (до 992px) --- */
 @media (max-width: 992px) {
-    .section {
-        padding: 4rem 0;
-    }
-    .section-1 {
-        padding-top: 20vw;
-    }
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 4rem;
-        padding: 0 1rem;
-    }
-    .service-card {
-        margin-top: 5rem;
-    }
-    .service-icon {
-        width: 8rem;
-        height: 8rem;
-        top: -4rem;
-    }
-    .service-content {
-        margin-top: 5rem;
-    }
-    .panel-container {
-        flex-direction: column;
-        height: auto;
-    }
-    .text-panel {
-        width: 100%;
-    }
-    .carousel-overlay {
-        position: relative;
-        width: 100%;
-        height: 250px;
-        border-radius: 0 0 20px 20px;
-    }
-    .section-8 {
-        margin-top: -100px;
-    }
+    .nav-links, .social-icons, .appointment-button, .address { display: none; }
+    .nav-bar { justify-content: space-between; }
+    .user-corner { position: fixed; bottom: 20px; right: 15px; top: auto; z-index: 999; }
+    .services-grid { gap: 2rem; }
+    .section-8 { margin-top: 0; }
+    .process-step:not(:last-child)::after, .center-dot { display: none; }
+    .col-text-left, .col-img-right, .col-text-right, .col-img-left { justify-content: center; padding: 0; }
+    .text-box { text-align: center; margin-bottom: 1.5rem; }
+    .img-step-1, .img-step-2, .img-step-3 { margin: 0 auto; max-height: 300px; }
+    .process-step .row { display: flex; flex-direction: column; text-align: center; } 
 }
 
-/* --- Телефоны (до 768px) --- */
 @media (max-width: 768px) {
-    .nav-bar {
-        width: 95%;
-        height: 48px;
-        padding: 0 0.8rem;
-    }
-    .nav-links,
-    .social-icons,
-    .appointment-button,
-    .address {
-        display: none;
-    }
-    .logo {
-        height: 1rem;
-    }
-    .user-corner {
-        position: fixed;
-        bottom: 20px;
-        right: 15px;
-        top: auto;
-        z-index: 999;
-        font-size: 0.75rem;
-        padding: 0.4rem 0.8rem;
-    }
-    .section-1 {
-        padding-top: 30vw;
-    }
-    .main-title {
-        font-size: clamp(1.8rem, 8vw, 2.5rem);
-        margin-bottom: 1.5rem;
-    }
-    .services {
-        font-size: 0.85rem;
-    }
-    .main-button {
-        width: 85%;
-        min-width: auto;
-    }
-    .services-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        padding: 0 1rem;
-    }
-    .service-card {
-        margin-top: 4rem;
-    }
-    .service-icon {
-        width: 6.5rem;
-        height: 6.5rem;
-        top: -3.25rem;
-    }
-    .service-content {
-        margin-top: 3.5rem;
-    }
-    .process-step .row {
-        flex-direction: column;
-        text-align: center;
-    }
-    .col-text-left,
-    .col-text-right,
-    .col-img-left,
-    .col-img-right {
-        justify-content: center;
-        padding: 0;
-    }
-    .text-box {
-        max-width: 100%;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-    .process-step:not(:last-child)::after,
-    .center-dot {
-        display: none;
-    }
-    .process-img {
-        max-width: 80%;
-        margin: 0 auto !important;
-        max-height: 250px !important;
-    }
-    .img-step-1,
-    .img-step-2,
-    .img-step-3 {
-        margin-top: 0 !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-    .section-8 {
-        margin-top: 0;
-    }
-    .slider-container {
-        width: 95%;
-    }
-    .slider img {
-        width: 240px;
-        height: 320px;
-    }
-    .arrow {
-        width: 2.2rem;
-        height: 2.2rem;
-    }
-    .section-10 .contact-buttons-row {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
-    }
-    .section-10 .appointment-button-white,
-    .section-10 .consultation-button {
-        width: 90%;
-        min-width: auto !important;
-    }
-    .footer-nav {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.8rem;
-    }
-    .footer-row {
-        text-align: center;
-    }
-}
-
-/* --- Маленькие телефоны (до 480px) --- */
-@media (max-width: 480px) {
-    .main-title {
-        font-size: 1.6rem;
-    }
-    .section-title {
-        font-size: 1.3rem;
-    }
-    .service-icon {
-        width: 5.5rem;
-        height: 5.5rem;
-        top: -2.75rem;
-    }
-    .service-content {
-        margin-top: 3rem;
-    }
-    .slider img {
-        width: 200px;
-        height: 280px;
-    }
-    .specialist-card {
-        width: 260px;
-    }
-    .profile-photo-frame {
-        width: 180px;
-        height: 250px;
-    }
-    .filters-group {
-        flex-wrap: wrap;
-    }
-    .filter-btn {
-        padding: 8px 15px;
-        font-size: 0.8rem;
-    }
-    .quiz-modal-container {
-        padding: 20px 15px !important;
-    }
-    .form-container,
-    .registration-form-container {
-        padding: 15px;
-        margin: 10px;
-    }
+    .joy-sidebar { width: 60px; }
+    .joy-sidebar:hover { width: 60px; }
+    .joy-content { width: calc(100% - 60px); padding: 80px 20px 20px; }
+    .joy-nav-text { display: none; }
+    .slider-wrapper { padding: 0 10px; }
+    .arrow { display: none; }
+    .slider-container, .specialists-slider-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .contact-buttons-row { flex-direction: column; }
+    .meditation-bottom-blocks { flex-direction: column; }
 }
